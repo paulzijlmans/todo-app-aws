@@ -1,0 +1,16 @@
+{
+  "name": "cdk",
+  "version": "0.1.0",
+  "description": "Cdk App",
+  "scripts": {
+    "network:deploy": "cdk deploy --app \"./mvnw -e -q compile exec:java -Dexec.mainClass=nl.paulzijlmans.todoapp.cdk.NetworkApp\" -c environmentName=staging -c region=eu-central-1 -c accountId=261017414850 --require-approval never",
+    "network:destroy": "cdk destroy --app \"./mvnw -e -q compile exec:java -Dexec.mainClass=nl.paulzijlmans.todoapp.cdk.NetworkApp\" -c environmentName=staging -c region=eu-central-1 -c accountId=261017414850 --force --require-approval never",
+    "repository:deploy": "cdk deploy --app \"./mvnw -e -q compile exec:java -Dexec.mainClass=nl.paulzijlmans.todoapp.cdk.DockerRepositoryApp\" -c region=eu-central-1 -c accountId=261017414850 -c applicationName=todoapp --require-approval never",
+    "repository:destroy": "cdk destroy --app \"./mvnw -e -q compile exec:java -Dexec.mainClass=nl.paulzijlmans.todoapp.cdk.DockerRepositoryApp\" -c region=eu-central-1 -c accountId=261017414850 -c applicationName=todoapp --force --require-approval never",
+    "service:deploy": "cdk deploy --app \"./mvnw -e -q compile exec:java -Dexec.mainClass=nl.paulzijlmans.todoapp.cdk.ServiceApp\" -c springProfile=aws -c dockerImageUrl=docker.io/pzijlmans/todo-app-v1:latest -c environmentName=staging -c region=eu-central-1 -c accountId=261017414850 -c applicationName=todoapp --require-approval never",
+    "service:destroy": "cdk destroy --app \"./mvnw -e -q compile exec:java -Dexec.mainClass=nl.paulzijlmans.todoapp.cdk.ServiceApp\" -c springProfile=aws -c dockerImageUrl=docker.io/pzijlmans/todo-app-v1:latest -c environmentName=staging -c region=eu-central-1 -c accountId=261017414850 -c applicationName=todoapp --force --require-approval never"
+  },
+  "devDependencies": {
+    "aws-cdk": "1.121.0"
+  }
+}
